@@ -14,6 +14,6 @@ response = client.complete(
         SystemMessage(content="You are a helpful assistant."),
         UserMessage(content="What is the capital of France?"),
     ],
-    model=os.getenv("GITHUB_MODEL", "gpt-4o"),
+    model=os.getenv("GITHUB_MODEL", "Ministral-3B"),
 )
 print(response.choices[0].message.content)

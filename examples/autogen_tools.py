@@ -51,6 +51,7 @@ def get_activities(city: str, date: str) -> list:
         {"name": "Hiking", "location": city},
         {"name": "Beach", "location": city},
         {"name": "Museum", "location": city},
+        {"name": "Eating", "location": city},
     ]
 
 
@@ -70,7 +71,7 @@ agent = AssistantAgent(
 async def main() -> None:
     team = RoundRobinGroupChat([agent], termination_condition=TextMessageTermination(agent.name))
 
-    async for task_result in team.run_stream(task="what can I do for funzies this weekend in Seattle?"):
+    async for task_result in team.run_stream(task="what can I do for funzies this weekend in Helsinki?"):
         logger.debug("%s: %s", type(task_result).__name__, task_result)
     print(task_result.messages[-1].content)
 
