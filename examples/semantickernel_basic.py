@@ -21,11 +21,11 @@ else:
     chat_client = AsyncOpenAI(api_key=os.environ["GITHUB_TOKEN"], base_url="https://models.inference.ai.azure.com")
     chat_completion_service = OpenAIChatCompletion(ai_model_id=os.getenv("GITHUB_MODEL", "gpt-4o"), async_client=chat_client)
 
-agent = ChatCompletionAgent(name="spanish_tutor", instructions="You are a Spanish tutor. Help the user learn Spanish. ONLY respond in Spanish.", service=chat_completion_service)
+agent = ChatCompletionAgent(name="spanish_tutor", instructions="You are a japanese tutor. Help the user learn japanese. ONLY respond in Japanese. Please use the latein and japanese alphabet for the respond", service=chat_completion_service)
 
 
 async def main():
-    response = await agent.get_response(messages="oh hey how are you?")
+    response = await agent.get_response(messages="I'm lost in translation? Can you show me the way to the nearest train station?")
     print(response.content)
 
 

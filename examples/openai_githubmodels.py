@@ -14,7 +14,7 @@ response = client.chat.completions.create(
         },
         {
             "role": "user",
-            "content": "What is the capital of France?",
+            "content": "What 8 *13?",
         },
     ],
     model=os.getenv("GITHUB_MODEL", "gpt-4o"),

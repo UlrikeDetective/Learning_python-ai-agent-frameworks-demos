@@ -55,8 +55,10 @@ def get_activities(city: str, date: str) -> list:
     logger.info(f"Getting activities for {city} on {date}")
     return [
         {"name": "Hiking", "location": city},
-        {"name": "Beach", "location": city},
         {"name": "Museum", "location": city},
+        {"name": "Restaurants", "location": city},
+        {"name": "Park", "location": city},
+        {"name": "day trip", "location": city},
     ]
 
 
@@ -68,14 +70,14 @@ def get_current_date() -> str:
 
 agent = Agent(
     name="Weekend Planner",
-    instructions="You help users plan their weekends and choose the best activities for the given weather. If an activity would be unpleasant in the weather, don't suggest it. Include the date of the weekend in your response.",
+    instructions="You help users plan their weekends and choose the best activities for the given weather. If an activity would be unpleasant in the weather, don't suggest it. Include the date of the weekend in your response. Please give the temperature in Celsius.",
     tools=[get_weather, get_activities, get_current_date],
     model=OpenAIChatCompletionsModel(model=MODEL_NAME, openai_client=client),
 )
 
 
 async def main():
-    result = await Runner.run(agent, input="hii what can I do this weekend in Seattle?")
+    result = await Runner.run(agent, input="hi what can I do this weekend in Leipzig, Germany?")
     print(result.final_output)
 
 

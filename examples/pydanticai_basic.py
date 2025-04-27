@@ -32,7 +32,7 @@ agent: Agent[None, str] = Agent(
 
 
 async def main():
-    result = await agent.run("oh hey how are you?")
+    result = await agent.run("Großartig, wie geht es dir?")
     print(result.data)
 
 
